@@ -1,0 +1,289 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StuGrading"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="StuGrading.MainWindow"
+        mc:Ignorable="d"
+        Title="StuGrading" Height="800" Width="1400" ResizeMode="NoResize">
+    <Grid x:Name="AppContent">
+        <Grid x:Name="login" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="headerLoginRow" Height="5*"/>
+                <RowDefinition x:Name="bodyLoginRow" Height="4*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="headerLoggin" Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+            </Grid>
+            <Grid x:Name="bodyLoggin" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Rectangle x:Name="backroundLogin" Grid.Row="0" Grid.RowSpan="3"  Grid.Column="2" Grid.ColumnSpan="2" Margin="10,20,10,10"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="DNI/NIA:" Margin="30,50,0,10"/>
+                <Label Grid.Row="1" Grid.Column="2" Content="Password:" Margin="30,20,0,40"/>
+                <TextBox x:Name="userLogin" Grid.Row="0" Grid.Column="3" Margin="-100,50,100,10"/>
+                <TextBox x:Name="pwdLogin" Grid.Row="1" Grid.Column="3" Margin="-100,20,100,40"/>
+                <Button x:Name="loginButton" Grid.Row="2" Grid.Column="2" Content="Validar" Margin="60,10,30,50"/>
+                <Button x:Name="exitLogin" Grid.Row="2" Grid.Column="3" Content="Salir" Margin="30,10,60,50"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="UsersView" Visibility="Visible">
+            <Grid x:Name="aluView" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="headerAlu" Height="1*" />
+                    <RowDefinition Height="8*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="logoHeader" Grid.Row="0" Grid.Column="0" Height="60" Width="60" Margin="10"/>
+                <Label x:Name="nomAlu" Grid.Row="0" Grid.Column="1" Content="NombreAlu" Margin="30,20,30,20" FontSize="24"/>
+                <Button x:Name="salirAlu" Grid.Row="0" Grid.Column="4" Content="Salir" Margin="30,20,30,20" FontSize="24"/>
+                <Image x:Name="imageUserHeader" Grid.Row="0" Grid.Column="5" Height="60" Width="60" Margin="10"/>
+                <Label Grid.Row="1" Grid.Column="1"  Content="Asignaturas: " Margin="0,10,0,640" FontSize="24" />
+                <Label Grid.Row="1" Grid.Column="4"  Content="Notas:" Margin="0,10,0,640" FontSize="24" HorizontalContentAlignment="Right"/>
+                <StackPanel x:Name="notasAlu" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="100,50,100,100">
+                    <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                </StackPanel>
+                <Label x:Name="mediaAlu" Grid.Row="1" Grid.Column="4"  Content="Media:" Margin="0,600,0,40" FontSize="24"/>
+            </Grid>
+            <Grid x:Name="profView" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="headerProf" Height="1*" />
+                    <RowDefinition Height="8*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="logoProfHeader" Grid.Row="0" Grid.Column="0" Height="60" Width="60" Margin="10"/>
+                <Label x:Name="nomProf" Grid.Row="0" Grid.Column="1" Content="NombreProf" Margin="30,20,30,20" FontSize="24" />
+                <Button x:Name="salirProf" Grid.Row="0" Grid.Column="4" Content="Salir" Margin="30,20,30,20" FontSize="24"/>
+                <Image x:Name="imageProfHeader" Grid.Row="0" Grid.Column="5" Height="60" Width="60" Margin="10"/>
+                <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="100,50,100,100">
+                    <TabItem Header="Mis Cursos" x:Name="cursosProf">
+                        <Grid x:Name="cursosProfCont">
+                            <StackPanel x:Name="cursosProfTable">
+                                <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                            </StackPanel>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Matricular Alumno" x:Name="matAlu">
+                        <Grid x:Name="matAluCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Dni/NIA:" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="dniNewAlu" Grid.Row="0" Grid.Column="1" Padding="0,10" Margin="30,0" VerticalAlignment="Center"/>
+                            <Label Grid.Row="1" Grid.Column="0" Content="Nombre del Alumno:" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right"/>
+                            <TextBox x:Name="nameNewAlu" Grid.Row="1" Grid.Column="1" Padding="0,10" Margin="30,0" VerticalAlignment="Center"/>
+                            <Label Grid.Row="2" Grid.Column="0" Content="Seleccione el Curso:" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right"/>
+                            <ComboBox x:Name="cursoNewAlu" Grid.Row="2" Grid.Column="1" Padding="0,10" Margin="30,0" VerticalAlignment="Center"></ComboBox>
+                            <Button x:Name="acepNewAlu" Grid.Row="3" Grid.Column="0" Content="Aceptar" Padding="0,10" Margin="200,0" VerticalAlignment="Center"></Button>
+                            <Button x:Name="borrNewAlu" Grid.Row="3" Grid.Column="1" Content="Cancelar" Padding="0,10" Margin="200,0" VerticalAlignment="Center"></Button>
+
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Poner Notas" x:Name="ponerNotas">
+                        <Grid x:Name="ponerNotasCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="4*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Seleccione el Curso:" Margin="20,20,0,20" FontSize="24" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
+                            <ComboBox x:Name="notasProf" Grid.Row="0" Grid.Column="1" Padding="0,10" Margin="20,0" VerticalAlignment="Center"></ComboBox>
+                            <Button x:Name="buscarNotasProf" Grid.Row="0" Grid.Column="2" Content="Mostrar" Margin="30,0" Padding="0,10"  VerticalAlignment="Center"></Button>
+                            <StackPanel x:Name="notasAluProf" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="30">
+                                <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+            <Grid x:Name="AdminView" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="headerAdmin" Height="1*" />
+                    <RowDefinition Height="8*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Image x:Name="logoAdminHeader" Grid.Row="0" Grid.Column="0" Height="60" Width="60" Margin="10"/>
+                <Label x:Name="nomAdmin" Grid.Row="0" Grid.Column="1" Content="Admin" Margin="30,20,30,20" FontSize="24"/>
+                <Button x:Name="salirAdmin" Grid.Row="0" Grid.Column="4" Content="Salir" Margin="30,20,30,20" FontSize="24"/>
+                <Image x:Name="imageAdminHeader" Grid.Row="0" Grid.Column="5" Height="60" Width="60" Margin="10"/>
+                <TabControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" Margin="100,50,100,100">
+                    <TabItem Header="Anyadir Profesor" x:Name="adminAnyadirProf">
+                        <Grid x:Name="adminAnyadirProfCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="223*" />
+                                <ColumnDefinition Width="175*"/>
+                                <ColumnDefinition Width="796*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="DNI :" Margin="30,0,20,0" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="dniNewProf" Grid.Column="2" Padding="0,10" Margin="30,0,300,0" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Nombre :" Margin="30,0,20,0" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="nameNewProf" Grid.Row="1" Grid.Column="2" Padding="0,10" Margin="30,0,300,0" VerticalAlignment="Center"/>
+                            <Button x:Name="acepNewProf" Grid.Row="2" Grid.Column="0" Content="Aceptar" Padding="0,10" Margin="150,0,50,0" VerticalAlignment="Center" Grid.ColumnSpan="2"></Button>
+                            <Button x:Name="borrNewProf" Grid.Row="2" Grid.Column="2" Content="Cancelar" Padding="0,10" Margin="50,0,550,0" VerticalAlignment="Center"></Button>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Asignar Curso" x:Name="adminAsignarCurso">
+                        <Grid x:Name="adminAsignarCursoCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="2*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="DNI Profesor:" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="dniProfCur" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Padding="0,10" Margin="50,10" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="0" Content="Nombre :" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="nomProfCur" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Padding="0,10" Margin="50,10" VerticalAlignment="Center" />
+                            <Label Grid.Row="2" Grid.Column="0" Content="Curso: " Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="curProfCur" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Padding="0,10" Margin="50,10" VerticalAlignment="Center" />
+                            <Button x:Name="acepAsiCur" Grid.Row="3" Grid.Column="1" Content="Asignar" Margin="25,10,25,160"></Button>
+                            <Button x:Name="borrAsiCur" Grid.Row="3" Grid.Column="2" Content="Cancelar" Margin="25,10,25,160"></Button>
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="Nombre Curso:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="nomNewCur" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Padding="0,10" Margin="50,10" VerticalAlignment="Center" />
+                            <Label Grid.Row="1" Grid.Column="3" Content="DNI Profesor:" Margin="30,20,20,20" FontSize="24" HorizontalContentAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="dniProfNewCur" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" Padding="0,10" Margin="50,10" VerticalAlignment="Center" />
+                            <Button x:Name="acepNewCur" Grid.Row="2" Grid.Column="4" Content="Asignar" Margin="30,35,20,35"></Button>
+                            <Button x:Name="borrNewCur" Grid.Row="2" Grid.Column="5" Content="Cancelar" Margin="30,35,20,35"></Button>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Cursos" x:Name="adminCursos">
+                        <Grid x:Name="adminCursosCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="6*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Nombre Curso:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="Numero Alumnos:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="2" Content="Acciones:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <StackPanel x:Name="adminListaCursos" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="30">
+                                <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Profesores" x:Name="adminProf">
+                        <Grid x:Name="adminProfCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="6*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Nombre Profesores:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="Acciones:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <StackPanel x:Name="adminListaProf" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="30">
+                                <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Alumnos" x:Name="adminAlu">
+                        <Grid x:Name="adminAluCont">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="6*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Nombre Alumnos:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <Label Grid.Row="0" Grid.Column="1" Content="Acciones:" Margin="10,20,20,20" FontSize="24" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
+                            <StackPanel x:Name="adminListaAlu" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="30">
+                                <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
