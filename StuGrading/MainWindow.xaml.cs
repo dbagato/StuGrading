@@ -23,6 +23,9 @@ namespace StuGrading
         public MainWindow()
         {
             InitializeComponent();
+            
         }
+
+       
     }
 }
