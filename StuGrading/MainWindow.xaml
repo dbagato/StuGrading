@@ -16,7 +16,7 @@
         Title="StuGrading" Height="400" Width="600" ResizeMode="CanResize" MinHeight="400" MinWidth="600">
 
     <Grid x:Name="AppContent">
-        <Grid x:Name="login" Visibility="Collapsed">
+        <Grid x:Name="login" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition x:Name="headerLoginRow" Height="5*"/>
                 <RowDefinition x:Name="bodyLoginRow" Height="4*"/>
@@ -41,7 +41,7 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2"/>
+                <Image Grid.Row="1" Grid.RowSpan="3" Grid.Column="2" Grid.ColumnSpan="2" Source="Images/logo.png"/>
             </Grid>
             <Grid x:Name="bodyLoggin" Grid.Row="1" Style="{StaticResource BodyLoginGrid }">
                 <Grid.RowDefinitions>
@@ -88,7 +88,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Rectangle x:Name="headerAlu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAlu }"/>
-                <Image x:Name="logoHeader" Grid.Row="0" Grid.Column="0" Margin="10"/>
+                <Image x:Name="logoHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomAlu" Grid.Row="0" Grid.Column="1" Content="NombreAlu" VerticalAlignment="Center"/>
                 <Button x:Name="salirAlu" Grid.Row="0" Grid.Column="4" Content="Salir" Style="{StaticResource TurquesaBaseButton }"/>
                 <Image x:Name="imageUserHeader" Grid.Row="0" Grid.Column="5" Source="Images/alum.png"/>
@@ -115,7 +115,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Rectangle x:Name="headerProf" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAdmin }"/>
-                <Image x:Name="logoProfHeader" Grid.Row="0" Grid.Column="0" Margin="10"/>
+                <Image x:Name="logoProfHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomProf" Grid.Row="0" Grid.Column="1" Content="NombreProf" VerticalAlignment="Center" />
                 <Button x:Name="salirProf" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Style="{StaticResource MoradoBaseButton }"/>
                 <Image x:Name="imageProfHeader" Grid.Row="0" Grid.Column="5" Source="Images/prof.png" Stretch="Uniform"/>
@@ -175,7 +175,7 @@
                     </TabItem>
                 </TabControl>
             </Grid>
-            <Grid x:Name="AdminView" Visibility="Visible">
+            <Grid x:Name="AdminView" Visibility="Collapsed">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
@@ -191,7 +191,7 @@
                     <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Rectangle x:Name="headeAdmin" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAdmin }"/>
-                <Image x:Name="logoAdminHeader" Grid.Row="0" Grid.Column="0" Margin="10"/>
+                <Image x:Name="logoAdminHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomAdmin" Grid.Row="0" Grid.Column="1" Content="Admin" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                 <Button x:Name="salirAdmin" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Style="{StaticResource  MoradoBaseButton}"/>
                 <Image x:Name="imageAdminHeader" Grid.Row="0" Grid.Column="5" Source="Images/prof.png" Stretch="Uniform"/>
