@@ -91,7 +91,7 @@
                 <Image x:Name="logoHeader" Grid.Row="0" Grid.Column="0" Margin="10"/>
                 <Label x:Name="nomAlu" Grid.Row="0" Grid.Column="1" Content="NombreAlu" VerticalAlignment="Center"/>
                 <Button x:Name="salirAlu" Grid.Row="0" Grid.Column="4" Content="Salir" Style="{StaticResource TurquesaBaseButton }"/>
-                <Image x:Name="imageUserHeader" Grid.Row="0" Grid.Column="5" Margin="10"/>
+                <Image x:Name="imageUserHeader" Grid.Row="0" Grid.Column="5" Source="Images/alum.png"/>
                 <Label Grid.Row="1" Grid.Column="1"  Content="Asignaturas: "  Style="{StaticResource AluFontColor }"/>
                 <Label Grid.Row="1" Grid.Column="4"  Content="Notas:" HorizontalContentAlignment="Right" Style="{StaticResource AluFontColor }"/>
                 <StackPanel x:Name="notasAlu" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
@@ -194,7 +194,7 @@
                 <Image x:Name="logoAdminHeader" Grid.Row="0" Grid.Column="0" Margin="10"/>
                 <Label x:Name="nomAdmin" Grid.Row="0" Grid.Column="1" Content="Admin" VerticalAlignment="Center" VerticalContentAlignment="Center" />
                 <Button x:Name="salirAdmin" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Style="{StaticResource  MoradoBaseButton}"/>
-                <Image x:Name="imageAdminHeader" Grid.Row="0" Grid.Column="5" Source="Images/alum.png" Stretch="Uniform"/>
+                <Image x:Name="imageAdminHeader" Grid.Row="0" Grid.Column="5" Source="Images/prof.png" Stretch="Uniform"/>
                 <TabControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0">
                     <TabItem Header="Anyadir Profesor" x:Name="adminAnyadirProf" Style="{StaticResource AdminTabItem }">
                         <Grid x:Name="adminAnyadirProfCont" Style="{StaticResource AdminGridTab}">
