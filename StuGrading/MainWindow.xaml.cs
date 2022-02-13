@@ -71,11 +71,6 @@ namespace StuGrading
            
         }
 
-       
-
-       
-       
-
         private void exitLogin_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown(-1);
@@ -137,13 +132,13 @@ namespace StuGrading
             pwdLogin.Text = string.Empty;
         }
 
+        //metodos para cargar los datos de Profesor
         private void cargarDatosProf(Usuario usuario)
         {
             cargarheaderAlumnosProfesor();
             cargarDatosTabViewProf1(usuario);
             cargarDatosComboBoxProfCursos(usuario,cursoNewAlu);
             cargarDatosComboBoxProfCursos(usuario, notasProf);
-
 
         }
         //ventana mis cursos
@@ -293,6 +288,8 @@ namespace StuGrading
 
         }
 
+        //metodos comentados de asignacion de Clck con los botones
+
        /* private RoutedEventHandler mostrarEditar(Button buttonEditarAcction, Button buttonAceptarAcction, Button buttonCancelarAcction)
         {
             buttonEditarAcction.Visibility=Visibility.Collapsed;
@@ -333,33 +330,47 @@ namespace StuGrading
             foreach (Curso curso in listCursosCombo) {
                 comboBox.Items.Add(curso.Nombre);
             }
-            
+            comboBox.SelectedIndex = 0;
 
         }
         private async void acepNewAlu_Click(object sender, RoutedEventArgs e)
         {
             Usuario usuario = new Usuario();
             Curso curso = new Curso();
-            usuario.Dni = dniNewAlu.Text;
-            usuario.Nombre = nameNewAlu.Text;
-            usuario.User = usuario.Dni;
-            usuario.Pwd=usuario.Dni;
-            usuario.Rol = "Alum";
-            firebaseHelper.actualizarInsertarUsuario(usuario);
-            curso.Nombre = cursoNewAlu.SelectedItem.ToString();
-            curso =await firebaseHelper.getCurso(curso.Nombre);
-            if (curso.Alumnos == null) {
-                curso.Alumnos = new ArrayList();
-                curso.Alumnos.Add(usuario.Dni);
-            }
-            else
+            if (dniNewAlu != null&&dniNewAlu.Text.Length==9)
             {
-                curso.Alumnos.Add(usuario.Dni);
+                if (nameNewAlu != null && nameNewAlu.Text.Length>2)
+                {
+                    usuario.Dni = dniNewAlu.Text;
+                    usuario.Nombre = nameNewAlu.Text;
+                    usuario.User = usuario.Dni;
+                    usuario.Pwd = usuario.Dni;
+                    usuario.Rol = "Alum";
+                    firebaseHelper.actualizarInsertarUsuario(usuario);
+                    curso.Nombre = cursoNewAlu.SelectedItem.ToString();
+                    curso = await firebaseHelper.getCurso(curso.Nombre);
+                    if (curso.Alumnos == null)
+                    {
+                        curso.Alumnos = new ArrayList();
+                        curso.Alumnos.Add(usuario.Dni);
+                    }
+                    else
+                    {
+                        curso.Alumnos.Add(usuario.Dni);
+                    }
+                    firebaseHelper.actualizarInsertarCurso(curso);
+                    MessageBox.Show("Usuario insertado correctamente");
+                    dniNewAlu.Text = String.Empty;
+                    nameNewAlu.Text = String.Empty;
+                }
+                else {
+                    MessageBox.Show("Inserte un nombre valido");
+                }
             }
-            firebaseHelper.actualizarInsertarCurso(curso);
-            MessageBox.Show("Usuario insertado correctamente");
-            dniNewAlu.Text = String.Empty;
-            nameNewAlu.Text=String.Empty;
+            else {
+                MessageBox.Show("Inserte un dni Valido");
+            }
+            
 
         }
 
@@ -370,13 +381,63 @@ namespace StuGrading
             cursoNewAlu.SelectedIndex = 0;
         }
 
-        private void buscarNotasProf_Click(object sender, RoutedEventArgs e)
+        private async void buscarNotasProf_Click(object sender, RoutedEventArgs e)
         {
+            notasAluProf.Children.Clear();
+            Curso cursoNotas = new Curso();
+            cursoNotas = await firebaseHelper.getCurso(notasProf.SelectedValue.ToString());
+            if (cursoNotas.Alumnos != null)
+            {
+                for (int i = 0; i < cursoNotas.Alumnos.Count; i++) {
+                Usuario alumno = new Usuario();
+                alumno=await firebaseHelper.buscarUsuario(cursoNotas.Alumnos[i].ToString());
+                    //dock para las filas de cursos y acciones
+                    DockPanel itemAlumNota = new DockPanel();
 
+                    Label nomAlumNota = new Label();
+                    nomAlumNota.Content = alumno.Nombre;
+                    nomAlumNota.Name = "nomAluNota" + i;
+                    nomAlumNota.Style = (Style)Application.Current.Resources["AdminFontColor"];
+                    nomAlumNota.HorizontalAlignment = HorizontalAlignment.Left;
+                    itemAlumNota.Children.Add(nomAlumNota);
+
+                    Notas notaAluCurso = new Notas();
+                    notaAluCurso = await firebaseHelper.getNotasAlumnoCurso(alumno.Dni,cursoNotas.IdCurso);
+                    TextBox notaTextBox = new TextBox();
+                    notaTextBox.Name = "notaTextBox" + i;
+                    notaTextBox.Style = (Style)Application.Current.Resources["AdminTextBox2"];
+                    notaTextBox.HorizontalAlignment = HorizontalAlignment.Center;
+                    if (notaAluCurso != null)
+                    {
+                        notaTextBox.Text=notaAluCurso.Nota.ToString();
+                    }
+                    else {
+                        notaTextBox.Text = "-";
+                    }
+                    itemAlumNota.Children.Add(notaTextBox);
+
+                    Button buttonAceptarAcction = new Button();
+                    //boton de aceptar
+                    buttonAceptarAcction.Content = "Aceptar";
+                    buttonAceptarAcction.Style = (Style)Application.Current.Resources["MoradoBaseButton"];
+                    buttonAceptarAcction.HorizontalAlignment = HorizontalAlignment.Left;
+                    //buttonAceptarAcction.Click += new RoutedEventHandler(actualizarNomCursoProf(nomCursoProf, curso));
+                    itemAlumNota.Children.Add(buttonAceptarAcction);
+
+                    notasAluProf.Children.Add(itemAlumNota);
+                }
+            }
+            else {
+                Label noAlum = new Label();
+                noAlum.Content = "No hay alumnos matriculados para este curso";
+                noAlum.Style = (Style)Application.Current.Resources["AdminFontColor"];
+                notasAluProf.Children.Add(noAlum);
+            }
         }
 
         //Admin Metodos
 
+        //metodos para cargar los datos de Admin
         private void cargarDatosAdmin(Usuario usuario)
         {
             cargarDatosProfComboBoxAdminCursos();
@@ -389,6 +450,7 @@ namespace StuGrading
         private async void cargarDatosProfComboBoxAdminCursos()
         {
             dniProfCur.Items.Clear();
+            dniProfNewCur.Items.Clear();
             List<Usuario> listprofCombo = new List<Usuario>();
             var contador = 0;
             listprofCombo = await firebaseHelper.getUsuariosProf();
@@ -398,7 +460,8 @@ namespace StuGrading
                 dniProfNewCur.Items.Insert(contador, profe.Dni);
                 contador++;
             }
-
+            dniProfCur.SelectedIndex = 0;
+            dniProfNewCur.SelectedIndex = 0;
         }
         private async void cargarDatosCursoComboBoxAdminCursos()
         {
@@ -411,7 +474,7 @@ namespace StuGrading
                 curProfCur.Items.Insert(contador, curso.Nombre);
                 contador++;
             }
-
+            curProfCur.SelectedIndex = 0;
         }
 
         private void salirAdmin_Click(object sender, RoutedEventArgs e)
@@ -424,17 +487,31 @@ namespace StuGrading
         //pantalla añadir profesor
         private void acepNewProf_Click(object sender, RoutedEventArgs e)
         {
-            Usuario newProfe = new Usuario();
-            newProfe.Dni = dniNewProf.Text;
-            newProfe.Nombre = nameNewProf.Text;
-            newProfe.User = newProfe.Dni;
-            newProfe.Pwd = newProfe.Dni;
-            newProfe.Rol = "Prof";
-            firebaseHelper.actualizarInsertarUsuario(newProfe);
-            MessageBox.Show("Usuario insertado correctamente");
-            dniNewProf.Text = String.Empty;
-            nameNewProf.Text = String.Empty;
-            cargarDatosProfComboBoxAdminCursos();
+            if (dniNewProf != null && dniNewProf.Text.Length == 9)
+            {
+                if (nameNewProf != null && nameNewProf.Text.Length > 2)
+                {
+                    Usuario newProfe = new Usuario();
+                    newProfe.Dni = dniNewProf.Text;
+                    newProfe.Nombre = nameNewProf.Text;
+                    newProfe.User = newProfe.Dni;
+                    newProfe.Pwd = newProfe.Dni;
+                    newProfe.Rol = "Prof";
+                    firebaseHelper.actualizarInsertarUsuario(newProfe);
+                    MessageBox.Show("Usuario insertado correctamente");
+                    dniNewProf.Text = String.Empty;
+                    nameNewProf.Text = String.Empty;
+                    cargarDatosProfComboBoxAdminCursos();
+                }
+                else
+                {
+                    MessageBox.Show("Inserte un nombre valido");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Inserte un dni Valido");
+            }
         }
 
         private void borrNewProf_Click(object sender, RoutedEventArgs e)
@@ -461,15 +538,21 @@ namespace StuGrading
         
         private async void acepNewCur_Click(object sender, RoutedEventArgs e)
         {
-            List<Curso> listCursoCombo = new List<Curso>();
-            listCursoCombo = await firebaseHelper.getCursos();
-            Curso curso = new Curso();
-            curso.DniProf = dniProfNewCur.SelectedItem.ToString();
-            curso.Nombre = nomNewCur.Text;
-            curso.IdCurso = listCursoCombo.Count + 1;
-            firebaseHelper.actualizarInsertarCurso(curso);
-            MessageBox.Show("Curso creado correctamente");
-            nomNewCur.Text = String.Empty;
+            if (nomNewCur!=null&&nomNewCur.Text.Length>3) {
+                List<Curso> listCursoCombo = new List<Curso>();
+                listCursoCombo = await firebaseHelper.getCursos();
+                Curso curso = new Curso();
+                curso.DniProf = dniProfNewCur.SelectedItem.ToString();
+                curso.Nombre = nomNewCur.Text;
+                curso.IdCurso = listCursoCombo.Count + 1;
+                firebaseHelper.actualizarInsertarCurso(curso);
+                MessageBox.Show("Curso creado correctamente");
+                nomNewCur.Text = String.Empty;
+            }
+            else {
+                MessageBox.Show("Inserta un nombre valido");
+            }
+            
         }
 
         private void borrNewCur_Click(object sender, RoutedEventArgs e)

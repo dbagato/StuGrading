@@ -29,7 +29,7 @@ namespace StuGrading.Helper
             _firestoreDb = FirestoreDb.Create(projectId);
         }
 
-    //Metodos Get
+        
 
         //Usuario
         public async Task<List<Usuario>> getUsuarios() {
@@ -50,7 +50,7 @@ namespace StuGrading.Helper
             }
            return listaUsuarios;
         }
-        
+
         public async Task<List<Usuario>> getUsuariosProf()
         {
             Query UsuariosProfQuery = _firestoreDb.Collection("Usuarios").WhereEqualTo("Rol","Prof");
@@ -112,6 +112,11 @@ namespace StuGrading.Helper
         {
             DocumentReference documentReference = _firestoreDb.Collection("Usuarios").Document(usuario.Dni);
             await documentReference.SetAsync(usuario);
+        }
+
+        public async void borrarUsuario(Usuario usuario) {
+            DocumentReference documentReference = _firestoreDb.Collection("Usuarios").Document(usuario.Dni);
+            await documentReference.DeleteAsync();
         }
 
         //Curso
@@ -203,6 +208,12 @@ namespace StuGrading.Helper
             await documentReference.SetAsync(curso);
         }
 
+        public async void borrarCurso(int idCurso)
+        {
+            DocumentReference documentReference = _firestoreDb.Collection("Curso").Document(idCurso.ToString());
+            await documentReference.DeleteAsync();
+        }
+
         //Notas
 
         public async Task<List<Notas>> getNotas()
@@ -270,6 +281,12 @@ namespace StuGrading.Helper
         {
             DocumentReference documentReference = _firestoreDb.Collection("Notas").Document(notas.IdNotas.ToString());
             await documentReference.SetAsync(notas);
+        }
+
+        public async void borrarNotas(int idNotas)
+        {
+            DocumentReference documentReference = _firestoreDb.Collection("Notas").Document(idNotas.ToString());
+            await documentReference.DeleteAsync();
         }
     }
 }
