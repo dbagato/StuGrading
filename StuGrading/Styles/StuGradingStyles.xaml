@@ -101,7 +101,7 @@
 
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#DFF3F1" />
-                            <Setter Property="Control.Foreground" Value="#FFFFFF" />
+                            <Setter Property="Control.Foreground" Value="#000000" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="#797EF0" />
@@ -110,7 +110,7 @@
 
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#A6A9F5" />
-                            <Setter Property="Control.Foreground" Value="#FFFFFF" />
+                            <Setter Property="Control.Foreground" Value="#000000" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -230,16 +230,16 @@
 
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#5DC1B9" />
-                            <Setter Property="Control.Foreground" Value="#A6A9F5" />
+                            <Setter Property="Control.Foreground" Value="#2028E6" />
                         </Trigger>
                         <Trigger Property="IsFocused" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="#DFF3F1" />
-                            <Setter Property="Control.Foreground" Value="#000000" />
+                            <Setter Property="Control.Foreground" Value="#2028E6" />
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="#5DC1B9" />
-                            <Setter Property="Control.Foreground" Value="#A6A9F5" />
+                            <Setter Property="Control.Foreground" Value="#2028E6" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

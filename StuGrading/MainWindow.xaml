@@ -11,7 +11,7 @@
         TextElement.FontWeight="Medium" 
         TextElement.FontSize= "16"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-    
+       
         mc:Ignorable="d"
         Title="StuGrading" Height="400" Width="600" ResizeMode="CanResize" MinHeight="400" MinWidth="600">
 
@@ -67,8 +67,8 @@
                 <Label Grid.Row="2" Grid.Column="2" Content="Password:" VerticalAlignment="Center" HorizontalContentAlignment="Right"/>
                 <TextBox x:Name="userLogin" Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" Style="{StaticResource LoginTextBox }"/>
                 <TextBox x:Name="pwdLogin" Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" Style="{StaticResource LoginTextBox }"/>
-                <Button x:Name="loginButton" Grid.Row="3" Grid.Column="2" Content="Validar" Style="{StaticResource TurquesaBaseButton}"/>
-                <Button x:Name="exitLogin" Grid.Row="3" Grid.Column="4" Content="Salir" Style="{StaticResource TurquesaBaseButton}" />
+                <Button x:Name="loginButton" Grid.Row="3" Grid.Column="2" Content="Validar" Click="loginButton_Click" Style="{StaticResource TurquesaBaseButton}"/>
+                <Button x:Name="exitLogin" Grid.Row="3" Grid.Column="4" Content="Salir" Click="exitLogin_Click" Style="{StaticResource TurquesaBaseButton}" />
             </Grid>
         </Grid>
         <Grid x:Name="UsersView" Visibility="Visible">
@@ -90,7 +90,7 @@
                 <Rectangle x:Name="headerAlu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAlu }"/>
                 <Image x:Name="logoHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomAlu" Grid.Row="0" Grid.Column="1" Content="NombreAlu" VerticalAlignment="Center"/>
-                <Button x:Name="salirAlu" Grid.Row="0" Grid.Column="4" Content="Salir" Style="{StaticResource TurquesaBaseButton }"/>
+                <Button x:Name="salirAlu" Grid.Row="0" Grid.Column="4" Content="Salir" Click="salirAlu_Click" Style="{StaticResource TurquesaBaseButton }"/>
                 <Image x:Name="imageUserHeader" Grid.Row="0" Grid.Column="5" Source="Images/alum.png"/>
                 <Label Grid.Row="1" Grid.Column="1"  Content="Asignaturas: "  Style="{StaticResource AluFontColor }"/>
                 <Label Grid.Row="1" Grid.Column="4"  Content="Notas:" HorizontalContentAlignment="Right" Style="{StaticResource AluFontColor }"/>
@@ -117,7 +117,7 @@
                 <Rectangle x:Name="headerProf" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAdmin }"/>
                 <Image x:Name="logoProfHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomProf" Grid.Row="0" Grid.Column="1" Content="NombreProf" VerticalAlignment="Center" />
-                <Button x:Name="salirProf" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Style="{StaticResource MoradoBaseButton }"/>
+                <Button x:Name="salirProf" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Click="salirProf_Click" Style="{StaticResource MoradoBaseButton }"/>
                 <Image x:Name="imageProfHeader" Grid.Row="0" Grid.Column="5" Source="Images/prof.png" Stretch="Uniform"/>
                 <TabControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4">
                     <TabItem Header="Mis Cursos" x:Name="cursosProf" Style="{StaticResource AdminTabItem }">
@@ -148,8 +148,8 @@
                             <TextBox x:Name="nameNewAlu" Grid.Row="1" Grid.Column="1" Padding="0,10" Margin="15,0" Style="{StaticResource AdminTextBox }"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Seleccione el Curso:" HorizontalContentAlignment="Right" Style="{StaticResource AdminFontColor }"/>
                             <ComboBox x:Name="cursoNewAlu" Grid.Row="2" Grid.Column="1" Padding="0,10" Margin="15,0" Style="{StaticResource ComboBoxProfAdmi}"/>
-                            <Button x:Name="acepNewAlu" Grid.Row="3" Grid.Column="0" Content="Aceptar" Style="{StaticResource MoradoBaseButton }"></Button>
-                            <Button x:Name="borrNewAlu" Grid.Row="3" Grid.Column="1" Content="Cancelar" Style="{StaticResource MoradoBaseButton }"></Button>
+                            <Button x:Name="acepNewAlu" Grid.Row="3" Grid.Column="0" Content="Aceptar" Click="acepNewAlu_Click" Style="{StaticResource MoradoBaseButton }"></Button>
+                            <Button x:Name="borrNewAlu" Grid.Row="3" Grid.Column="1" Content="Cancelar" Click="borrNewAlu_Click" Style="{StaticResource MoradoBaseButton }"></Button>
 
                         </Grid>
                     </TabItem>
@@ -167,7 +167,7 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="Seleccione Curso:" HorizontalContentAlignment="Right" Style="{StaticResource AdminFontColor }"/>
                             <ComboBox x:Name="notasProf" Grid.Row="0" Grid.Column="1" Padding="0,10" VerticalAlignment="Center"  Style="{StaticResource ComboBoxProfAdmi}"></ComboBox>
-                            <Button x:Name="buscarNotasProf" Grid.Row="0" Grid.Column="3" Content="Mostrar" Style="{StaticResource MoradoBaseButton }"></Button>
+                            <Button x:Name="buscarNotasProf" Grid.Row="0" Grid.Column="3" Content="Mostrar" Click="buscarNotasProf_Click" Style="{StaticResource MoradoBaseButton }"></Button>
                             <StackPanel x:Name="notasAluProf" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Style="{StaticResource StackPanelProf }">
                                 <!--Se cargara en codigo los elementos extraidos de la Base de datos-->
                             </StackPanel>
@@ -193,7 +193,7 @@
                 <Rectangle x:Name="headeAdmin" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Style="{StaticResource HeaderAdmin }"/>
                 <Image x:Name="logoAdminHeader" Grid.Row="0" Grid.Column="0" Source="Images/logo.png"/>
                 <Label x:Name="nomAdmin" Grid.Row="0" Grid.Column="1" Content="Admin" VerticalAlignment="Center" VerticalContentAlignment="Center" />
-                <Button x:Name="salirAdmin" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Style="{StaticResource  MoradoBaseButton}"/>
+                <Button x:Name="salirAdmin" Grid.Row="0" Grid.Column="4" Content="Salir" VerticalAlignment="Center" Click="salirAdmin_Click"  Style="{StaticResource  MoradoBaseButton}"/>
                 <Image x:Name="imageAdminHeader" Grid.Row="0" Grid.Column="5" Source="Images/prof.png" Stretch="Uniform"/>
                 <TabControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" Margin="30,0">
                     <TabItem Header="Anyadir Profesor" x:Name="adminAnyadirProf" Style="{StaticResource AdminTabItem }">
@@ -213,8 +213,8 @@
                             <TextBox x:Name="dniNewProf" Grid.Column="2" VerticalAlignment="Center" Style="{StaticResource AdminTextBox}"/>
                             <Label Grid.Row="1" Grid.Column="0" Content="Nombre :" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource AdminFontColor}"/>
                             <TextBox x:Name="nameNewProf" Grid.Row="1" Grid.Column="2" Padding="0,10" VerticalAlignment="Center" Style="{StaticResource AdminTextBox}"/>
-                            <Button x:Name="acepNewProf" Grid.Row="2" Grid.Column="0" Content="Aceptar" VerticalAlignment="Center" Grid.ColumnSpan="2" Style="{StaticResource MoradoBaseButton}"></Button>
-                            <Button x:Name="borrNewProf" Grid.Row="2" Grid.Column="2" Content="Cancelar" VerticalAlignment="Center" Style="{StaticResource MoradoBaseButton}"></Button>
+                            <Button x:Name="acepNewProf" Grid.Row="2" Grid.Column="0" Content="Aceptar" VerticalAlignment="Center"  Grid.ColumnSpan="2" Click="acepNewProf_Click" Style="{StaticResource MoradoBaseButton}"></Button>
+                            <Button x:Name="borrNewProf" Grid.Row="2" Grid.Column="2" Content="Cancelar" VerticalAlignment="Center" Click="borrNewProf_Click"  Style="{StaticResource MoradoBaseButton}"></Button>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Asignar Curso" x:Name="adminAsignarCurso" Style="{StaticResource AdminTabItem }">
@@ -235,19 +235,17 @@
                             </Grid.ColumnDefinitions>
                             <Label Grid.Row="0" Grid.Column="0" Content="DNI Profesor:" HorizontalContentAlignment="Right" Style="{StaticResource AdminFontColor}"/>
                             <ComboBox x:Name="dniProfCur" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"  Style="{StaticResource ComboBoxProfAdmi}"/>
-                            <Label Grid.Row="1" Grid.Column="0" Content="Nombre :" HorizontalContentAlignment="Right"  Style="{StaticResource AdminFontColor}"/>
-                            <ComboBox x:Name="nomProfCur" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource ComboBoxProfAdmi}"/>
                             <Label Grid.Row="2" Grid.Column="0" Content="Curso: " HorizontalContentAlignment="Right"  Style="{StaticResource AdminFontColor}"/>
                             <ComboBox x:Name="curProfCur" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource ComboBoxProfAdmi}"/>
-                            <Button x:Name="acepAsiCur" Grid.Row="3" Grid.Column="1" Content="Asignar" Style="{StaticResource MoradoBaseButton}"></Button>
-                            <Button x:Name="borrAsiCur" Grid.Row="3" Grid.Column="2" Content="Cancelar" Style="{StaticResource MoradoBaseButton}"></Button>
+                            <Button x:Name="acepAsiCur" Grid.Row="3" Grid.Column="1" Content="Asignar" Click="acepAsiCur_Click" Style="{StaticResource MoradoBaseButton}"></Button>
+                            <Button x:Name="borrAsiCur" Grid.Row="3" Grid.Column="2" Content="Cancelar" Click="borrAsiCur_Click" Style="{StaticResource MoradoBaseButton}"></Button>
 
                             <Label Grid.Row="0" Grid.Column="3" Content="Nombre Curso:" HorizontalContentAlignment="Right"  Style="{StaticResource AdminFontColor}"/>
                             <TextBox x:Name="nomNewCur" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource AdminTextBox}"/>
                             <Label Grid.Row="1" Grid.Column="3" Content="DNI Profesor:" HorizontalContentAlignment="Right"  Style="{StaticResource AdminFontColor}"/>
                             <ComboBox x:Name="dniProfNewCur" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource ComboBoxProfAdmi}"/>
-                            <Button x:Name="acepNewCur" Grid.Row="2" Grid.Column="4" Content="Asignar" Style="{StaticResource MoradoBaseButton}" ></Button>
-                            <Button x:Name="borrNewCur" Grid.Row="2" Grid.Column="5" Content="Cancelar" Style="{StaticResource MoradoBaseButton}"></Button>
+                            <Button x:Name="acepNewCur" Grid.Row="2" Grid.Column="4" Content="Asignar" Click="acepNewCur_Click" Style="{StaticResource MoradoBaseButton}" ></Button>
+                            <Button x:Name="borrNewCur" Grid.Row="2" Grid.Column="5" Content="Cancelar" Click="borrNewCur_Click" Style="{StaticResource MoradoBaseButton}"></Button>
                         </Grid>
                     </TabItem>
                     <TabItem Header="Cursos" x:Name="adminCursos" Style="{StaticResource AdminTabItem }">
@@ -261,7 +259,7 @@
                                 <ColumnDefinition Width="2*" />
                                 <ColumnDefinition Width="2*" />
                             </Grid.ColumnDefinitions>
-                            <Label Grid.Row="0" Grid.Column="0" Content="Nombre Curso:"  HorizontalContentAlignment="Center"  Style="{StaticResource AdminFontColor}"/>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Nombre Curso:" HorizontalContentAlignment="Center"  Style="{StaticResource AdminFontColor}"/>
                             <Label Grid.Row="0" Grid.Column="1" Content="Numero Alumnos:" HorizontalContentAlignment="Center" Style="{StaticResource AdminFontColor}"/>
                             <Label Grid.Row="0" Grid.Column="2" Content="Acciones:" HorizontalContentAlignment="Center"  Style="{StaticResource AdminFontColor}"/>
                             <StackPanel x:Name="adminListaCursos" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="30">
