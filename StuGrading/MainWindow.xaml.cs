@@ -420,7 +420,7 @@ namespace StuGrading
                     //boton de aceptar
                     buttonAceptarAcction.Content = "Aceptar";
                     buttonAceptarAcction.Style = (Style)Application.Current.Resources["MoradoBaseButton"];
-                    buttonAceptarAcction.HorizontalAlignment = HorizontalAlignment.Left;
+                    buttonAceptarAcction.HorizontalAlignment = HorizontalAlignment.Right;
                     //buttonAceptarAcction.Click += new RoutedEventHandler(actualizarNomCursoProf(nomCursoProf, curso));
                     itemAlumNota.Children.Add(buttonAceptarAcction);
 
