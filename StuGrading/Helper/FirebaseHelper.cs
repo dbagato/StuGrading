@@ -17,7 +17,7 @@ namespace StuGrading.Helper
     {
 
         //Directivas de Firestore para poder generar la conexion
-        private string dir = "Helper//stugrading-firebase-adminsdk-74xdc-0930fb672b.json";
+        private string dir = "URL DE SU ARCHIVO DE CLAVES FIREBSE";
         private string projectId;
         private FirestoreDb _firestoreDb;
         
